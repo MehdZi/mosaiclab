@@ -34,7 +34,7 @@
   background: none !important; }
 
 .btn {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Muli', sans-serif;
   font-weight: 500;
   letter-spacing: 2px;
   padding: 0.75rem 2.1875rem;
@@ -50,7 +50,7 @@
   font-size: 0.9687rem;
   line-height: 1.5;
   border-radius: 3px;
-  font-family: "Lora";
+  font-family: "Muli";
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0px; }
@@ -456,7 +456,7 @@ p.lead,
   font-size: 1.07rem;
   font-weight: 300; }
   .lead a {
-    font-family: "Lora";
+    font-family: "Muli";
     font-style: italic;
     font-weight: 400; }
     .lead a, .lead a:hover {
@@ -481,7 +481,7 @@ p.lead,
     font-weight: 600;
     margin-bottom: 1.605rem; }
   .lead blockquote {
-    font-family: "Lora";
+    font-family: "Muli";
     font-style: italic;
     padding: 10px 0 10px 20px;
     border-left: 4px solid #c39f76;
@@ -551,7 +551,7 @@ p.lead,
 .alert {
   border-radius: 0;
   border: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Muli', sans-serif;
   font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 1.875rem;
@@ -681,7 +681,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
   font-style: italic;
   font-weight: 400;
   font-size: 17px;
-  font-family: "Lora";
+  font-family: "Muli";
   line-height: 26px;
   color: #8c8c8c;
   margin-bottom: 30px; }
@@ -696,7 +696,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
   margin-bottom: 1.6875rem; }
 .mbr-section-hero .mbr-section-lead {
   color: #fff;
-  font-family: Lora;
+  font-family: Muli;
   font-size: 1.5rem;
   font-style: italic;
   margin-top: -1em; }
@@ -824,7 +824,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
   .mbr-figure .mbr-figure-caption {
     background: #2e2e2e;
     color: #fff;
-    font-family: Montserrat;
+    font-family: Muli;
     padding: 1.5rem 0;
     text-align: center;
     width: 100%; }
@@ -845,7 +845,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     width: 100%; }
   .mbr-map [data-state-details] {
     color: #6b6763;
-    font-family: Montserrat;
+    font-family: Muli;
     height: 1.5em;
     margin-top: -0.75em;
     padding-left: 1.25rem;
@@ -953,7 +953,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
   opacity: 0.9; }
 
 .mbr-gallery-title {
-  font-family: Montserrat;
+  font-family: Muli;
   font-size: 0.9em;
   position: absolute;
   display: block;
