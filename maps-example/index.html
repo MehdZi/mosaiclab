@@ -1,0 +1,372 @@
+<html>
+<head>
+ <!-- styles put here, but you can include a CSS file and reference it instead! -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+ <body>
+    <div id="logo">
+    <img src="img/logo@2x.png" alt="" width="240" height="50"/>
+</div>
+     <div id="map"></div>
+   <script>
+    var map;
+    
+    var markers = [];
+       
+     function initMap() {
+          // Create a styles array to use with the map.
+        var styles = [
+              {
+                "elementType": "labels",
+                "stylers": [
+                  {
+                    "saturation": "-50"
+                  }
+                ]
+              },
+              {
+                "featureType": "landscape",
+                "stylers": [
+                  {
+                    "hue": "#15B28A"
+                  },
+                  {
+                    "saturation": "-50"
+                  },
+                  {
+                    "lightness": "5"
+                  },
+                  {
+                    "visibility": "on"
+                  }
+                ]
+              },
+              {
+                "featureType": "poi",
+                "elementType": "geometry.fill",
+                "stylers": [
+                  {
+                    "hue": "#15B28A"
+                  },
+                  {
+                    "saturation": "-50"
+                  },
+                  {
+                    "lightness": "5"
+                  },
+                  {
+                    "visibility": "on"
+                  }
+                ]
+              },
+              {
+                "featureType": "poi",
+                "elementType": "labels",
+                "stylers": [
+                  {
+                    "visibility": "on"
+                  }
+                ]
+              },
+              {
+                "featureType": "poi.attraction",
+                "elementType": "geometry.fill",
+                "stylers": [
+                  {
+                    "hue": "#15B28A"
+                  },
+                  {
+                    "saturation": "-50"
+                  },
+                  {
+                    "lightness": "5"
+                  },
+                  {
+                    "visibility": "on"
+                  }
+                ]
+              },
+              {
+                "featureType": "poi.business",
+                "elementType": "geometry.fill",
+                "stylers": [
+                  {
+                    "hue": "#15B28A"
+                  },
+                  {
+                    "saturation": "-50"
+                  },
+                  {
+                    "lightness": "5"
+                  },
+                  {
+                    "visibility": "on"
+                  }
+                ]
+              },
+              {
+                "featureType": "poi.government",
+                "elementType": "geometry.fill",
+                "stylers": [
+                  {
+                    "hue": "#15B28A"
+                  },
+                  {
+                    "saturation": "-50"
+                  },
+                  {
+                    "lightness": "5"
+                  },
+                  {
+                    "visibility": "on"
+                  }
+                ]
+              },
+              {
+                "featureType": "poi.sport_complex",
+                "elementType": "geometry.fill",
+                "stylers": [
+                  {
+                    "hue": "#15B28A"
+                  },
+                  {
+                    "saturation": "-50"
+                  },
+                  {
+                    "lightness": "5"
+                  },
+                  {
+                    "visibility": "on"
+                  }
+                ]
+              },
+              {
+                "featureType": "road",
+                "elementType": "geometry.fill",
+                "stylers": [
+                  {
+                    "hue": "#15B28A"
+                  },
+                  {
+                    "saturation": "-50"
+                  },
+                  {
+                    "lightness": "5"
+                  },
+                  {
+                    "visibility": "on"
+                  }
+                ]
+              },
+              {
+                "featureType": "road",
+                "elementType": "geometry.stroke",
+                "stylers": [
+                  {
+                    "visibility": "off"
+                  }
+                ]
+              },
+              {
+                "featureType": "road.arterial",
+                "elementType": "labels.icon",
+                "stylers": [
+                  {
+                    "visibility": "off"
+                  }
+                ]
+              },
+              {
+                "featureType": "road.highway",
+                "elementType": "geometry.fill",
+                "stylers": [
+                  {
+                    "hue": "#15B28A"
+                  },
+                  {
+                    "saturation": "-50"
+                  },
+                  {
+                    "lightness": "5"
+                  },
+                  {
+                    "visibility": "on"
+                  }
+                ]
+              },
+              {
+                "featureType": "road.highway",
+                "elementType": "labels",
+                "stylers": [
+                  {
+                    "visibility": "off"
+                  }
+                ]
+              },
+              {
+                "featureType": "road.local",
+                "elementType": "labels.icon",
+                "stylers": [
+                  {
+                    "visibility": "off"
+                  }
+                ]
+              },
+              {
+                "featureType": "transit",
+                "elementType": "geometry.fill",
+                "stylers": [
+                  {
+                    "hue": "#15B28A"
+                  },
+                  {
+                    "saturation": "-50"
+                  },
+                  {
+                    "lightness": "5"
+                  },
+                  {
+                    "visibility": "on"
+                  }
+                ]
+              },
+              {
+                "featureType": "transit.station",
+                "elementType": "geometry.fill",
+                "stylers": [
+                  {
+                    "hue": "#15B28A"
+                  },
+                  {
+                    "saturation": "-50"
+                  },
+                  {
+                    "lightness": "5"
+                  },
+                  {
+                    "visibility": "on"
+                  }
+                ]
+              },
+              {
+                "featureType": "water",
+                "elementType": "geometry",
+                "stylers": [
+                  {
+                    "hue": "#15B28A"
+                  },
+                  {
+                    "saturation": "-50"
+                  },
+                  {
+                    "lightness": "5"
+                  },
+                  {
+                    "visibility": "on"
+                  }
+                ]
+              }
+            ];
+         
+         map = new google.maps.Map(document.getElementById('map'), {
+             center: {lat: 31.7158758, lng:-11.5789643},
+             zoom: 6,
+             styles: styles,
+             mapTypeControl: false,
+             streetViewControl: false
+         });
+         
+         //liste des musées gérés par la fondation nationale
+         var museumIcon = {
+             url : '/img/pinpoint_museum.png',
+             scaledSize : new google.maps.Size(40,40),
+             origin : new google.maps.Point(0,0),
+             anchor : new google.maps.Point(20,35)
+         };
+         
+         var clusterStyle = [{
+        url : 'img/m1.png',
+        height: 50,
+        width: 50,
+        //anchor: [25, 25],
+        textColor: '#ffffff',
+        textSize: 12}];
+         
+          var options = {
+              gridSize:13,
+              styles : clusterStyle,
+              imagePath: 'img/m'};
+         
+         var locations =[
+                    {title: 'Musée la Kasbah des cultures méditerranéennes', location: {lat : 35.7884052, lng: -5.8126964}},
+                    {title: 'Musée ethnographique de Tétouan', location: {lat : 35.5703375, lng: -5.3635828}},
+                    {title: 'Musée archeologique de Tétouan', location: {lat : 35.5707167, lng: -5.3706519}},
+                    {title: 'Musée Mohammed VI d’art moderne et contemporain', location: {lat : 34.0151436, lng: -6.8329167}},
+                    {title: 'Musée national de l’histoire et des civilisations', location: {lat : 34.0137416, lng: -6.830897}},
+                    {title: 'Musée national des bijoux', location: {lat : 34.0316038, lng: -6.8355741}},
+                    {title: 'Musée Al Batha de Fès', location: {lat : 34.0593971, lng: -4.9817419}},
+                    {title: 'Musée Dar Jamaï', location: {lat : 33.8932662, lng: -5.56583}},
+                    {title: 'Musée Borj Bel Kari', location: {lat : 33.8937072, lng: -5.5665359}},
+                    {title: 'Musée Dar El Bacha de Marrakech', location: {lat : 31.6233474, lng: -7.9840286}},
+                    {title: 'Musée Dar si Saïd de Marrakech', location: {lat : 31.6224128, lng: -7.9841305}},
+                    {title: 'Musée national de la céramique', location: {lat : 32.2973794, lng: -9.2441502}},
+                    {title: 'Musée des arts sahariens de Laâyoune', location: {lat : 27.1525354, lng: -13.2061203}}
+                ];
+         
+     var largeInfowindow = new google.maps.InfoWindow();
+        var bounds = new google.maps.LatLngBounds();
+        // The following group uses the location array to create an array of markers on initialize.
+        for (var i = 0; i < locations.length; i++) {
+          // Get the position from the location array.
+          var position = locations[i].location;
+          var title = locations[i].title;
+          // Create a marker per location, and put into markers array.
+          var marker = new google.maps.Marker({
+            map: map,
+            position: position,
+            title: title,
+            icon: museumIcon,
+            animation: google.maps.Animation.DROP,
+            id: i
+          });
+          // Push the marker to our array of markers.
+          markers.push(marker);
+        
+       
+       
+          // Create an onclick event to open an infowindow at each marker.
+          marker.addListener('click', function() {
+            populateInfoWindow(this, largeInfowindow);
+          });
+          bounds.extend(markers[i].position);
+        }
+        // Extend the boundaries of the map for each marker
+        map.fitBounds(bounds);
+      var markerCluster = new MarkerClusterer(map, markers, options); 
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(document.getElementById('logo'));
+     }
+      // This function populates the infowindow when the marker is clicked. We'll only allow
+      // one infowindow which will open at the marker that is clicked, and populate based
+      // on that markers position.
+      function populateInfoWindow(marker, infowindow) {
+        // Check to make sure the infowindow is not already opened on this marker.
+        if (infowindow.marker != marker) {
+          infowindow.marker = marker;
+          infowindow.setContent('<div>' + marker.title + '</div>');
+          infowindow.open(map, marker);
+          // Make sure the marker property is cleared if the infowindow is closed.
+          infowindow.addListener('closeclick',function(){
+            infowindow.setMarker = null;
+          });
+        }
+      }
+    
+
+     
+   </script>
+     <script src="js/markerclusterer.js"></script>
+   <script async defer
+           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRNlltzPm9G7CqFx4ou7zGR_FS9Cv7fnY&v=3&region=MA&callback=initMap">
+   </script>
+ </body>
+</html>
